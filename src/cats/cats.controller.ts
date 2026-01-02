@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, Query } from "@nestjs/common";
 import { CatsService } from "./cats.service";
-import { CreateCatDto } from "./create-cat.dto";
+import { CreateCatDto } from "./dto/create-cat.dto";
+import { Cat } from "./interface/cat.interface";
 
 @Controller('cats')
 export class CatsController {
@@ -8,12 +9,12 @@ export class CatsController {
     constructor(private readonly catsService: CatsService) {}
 
   @Post()
-  createCats(@Body() createCatDto: CreateCatDto): string {
-    return "This action adds a new cat with name: " + createCatDto.name + " and age: " + createCatDto.age + " and breed: " + createCatDto.breed + "\n";
+  createCats(@Body() createCatDto: CreateCatDto) {
+    this.catsService.create(createCatDto);
   }
 
   @Get()
-  findAll(@Query('name') name: string, @Query('age') age: number, @Query('breed') breed: string): string {
+  async findAll(@Query('name') name: string, @Query('age') age: number, @Query('breed') breed: string): Promise<Cat[]> {
     return this.catsService.findAll(name, age, breed);
   }
 
