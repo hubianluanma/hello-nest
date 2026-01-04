@@ -5,6 +5,7 @@ import { CatsModule } from './cats/cats.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './user/entity/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { UserEntity } from './user/entity/user.entity';
       entities: [UserEntity], // 引入实体类
       synchronize: true, // 仅在开发环境使用，生产环境不推荐
     }),
-    CatsModule, UserModule],
+    CatsModule, UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
