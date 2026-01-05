@@ -11,4 +11,12 @@ export class UserService {
     async findAll(): Promise<UserEntity[]> {
         return this.userRepository.find();
     }
+
+    async findById(id: string): Promise<UserEntity | null> {
+        return this.userRepository.findOneBy({ id });
+    }
+
+    async findByNickname(nickname: string): Promise<UserEntity | null> {
+        return this.userRepository.findOneBy({ nickname });
+    }
 }

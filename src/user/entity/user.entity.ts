@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
 @Entity('tb_user')
 export class UserEntity {
     @PrimaryColumn({ type: "bigint" })
-    id: number;
+    id: string;
     @Column({ type: "varchar", length: 20, unique: true, nullable: false })
     username: string;
     @Column({ type: "varchar", length: 20, nullable: false })
@@ -18,6 +18,6 @@ export class UserEntity {
     createTime: Date;
     @Column({ type: "tinyint", default: false })
     subscribed: boolean;
-    @Column({ type: "json", name: "addr_json" })
+    @Column({ type: "json", name: "addr_json", nullable: true })
     addrJson: string;
 }
