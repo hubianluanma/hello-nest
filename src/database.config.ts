@@ -1,5 +1,6 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { UserEntity } from "./user/entity/user.entity";
+import { AdminUserEntity } from "./admin-user/entity/adminUser.entity";
 
 // database.config.ts
 export const databaseConfig: TypeOrmModuleOptions = {
@@ -9,6 +10,6 @@ export const databaseConfig: TypeOrmModuleOptions = {
     username: 'root', // 数据库用户名
     password: 'huhailong', // 数据库密码
     database: 'mood_recorder', // 数据库名称
-    entities: [UserEntity], // 引入实体类
+    entities: [UserEntity, AdminUserEntity], // 引入实体类
     synchronize: true, // 仅在开发环境使用，生产环境不推荐
 };

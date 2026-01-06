@@ -15,4 +15,8 @@ export class AdminUserService {
         const adminUser = this.adminUserRepository.create(createAdminUser);
         this.adminUserRepository.save(adminUser);
     }
+
+    async findByUsername(username: string): Promise<AdminUserEntity | null> {
+        return this.adminUserRepository.findOne({ where: { username } });
+    }
 }

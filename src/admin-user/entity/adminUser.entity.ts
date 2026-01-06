@@ -8,8 +8,8 @@ export class AdminUserEntity {
     username: string;
     @Column({ type: "varchar", length: 100, nullable: false })
     password: string;
-    @Column({ type: "datetime", nullable: false, name: "create_time" })
+    @Column({ type: "datetime", nullable: false, name: "create_time", default: () => "CURRENT_TIMESTAMP" })
     createTime: Date;
-    @Column({ type: "datetime", nullable: true, name: "last_login_time" })
+    @Column({ type: "datetime", nullable: true, name: "last_login_time", default: () => "CURRENT_TIMESTAMP" })
     lastLoginTime: Date;
 }
